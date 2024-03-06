@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AddressEditDlg" widgetVar="AddressEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditAddressTitle}" showEffect="blind" hideEffect="blind">
+            <h:form id="AddressEditForm">
+                <h:panelGroup id="display">
+                    <h:panelGrid columns="2" rendered="#{addressController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditAddressLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{addressController.selected.id}" title="#{bundle.EditAddressTitle_id}" disabled="true"/>
+
+                        <p:outputLabel value="#{bundle.EditAddressLabel_state}" for="state" />
+                        <p:inputText id="state" value="#{addressController.selected.state}" maxlength="2" title="#{bundle.EditAddressTitle_state}" required="true" requiredMessage="#{bundle.EditAddressRequiredMessage_state}">
+                            <f:validateRegex pattern="[/^A-Z]" />
+                        </p:inputText>
+
+                        <p:outputLabel value="#{bundle.EditAddressLabel_city}" for="city" />
+                        <p:inputText id="city" value="#{addressController.selected.city}" title="#{bundle.EditAddressTitle_city}" required="true" requiredMessage="#{bundle.EditAddressRequiredMessage_city}"/>
+
+                        <p:outputLabel value="#{bundle.EditAddressLabel_street}" for="street" />
+                        <p:inputText id="street" value="#{addressController.selected.street}" title="#{bundle.EditAddressTitle_street}" required="true" requiredMessage="#{bundle.EditAddressRequiredMessage_street}"/>
+
+                        <p:outputLabel value="#{bundle.EditAddressLabel_number}" for="number" />
+                        <p:inputText id="number" value="#{addressController.selected.number}" title="#{bundle.EditAddressTitle_number}" required="true" requiredMessage="#{bundle.EditAddressRequiredMessage_number}"/>
+
+                        <p:outputLabel value="#{bundle.EditAddressLabel_zipCode}" for="zipCode" />
+                        <p:inputMask id="zipCode" value="#{addressController.selected.zipCode}" mask="99999-999" title="#{bundle.EditAddressTitle_zipCode}" required="true" requiredMessage="#{bundle.EditAddressRequiredMessage_zipCode}"/>
+
+                        <p:outputLabel value="#{bundle.EditAddressLabel_personId}" for="personId" />
+                        <p:selectOneMenu id="personId" value="#{addressController.selected.personId}" required="true" requiredMessage="#{bundle.EditAddressRequiredMessage_personId}"
+                                         panelStyle="width:180px" effect="fade" filter="true" filterMatchMode="contains" style="width: 158px">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{personController.itemsAvailableSelectOne}"
+                                           var="personIdItem"
+                                           itemValue="#{personIdItem}"/>
+                        </p:selectOneMenu>
+                    </h:panelGrid>
+                    <p:commandButton icon="fa fa-save" actionListener="#{addressController.update}" value="#{bundle.Save}" update="display,:AddressListForm:datalist,:growl" oncomplete="handleSubmit(args, 'AddressEditDialog');"/>
+                    <p:commandButton icon="fa fa-close" actionListener="#{addressController.cancel()}" value="#{bundle.Cancel}" immediate="true" onclick="AddressEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

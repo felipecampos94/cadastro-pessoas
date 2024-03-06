@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  person-db:
+    image: postgres:15
+    container_name: person-db
+    environment:
+      POSTGRES_DB: person
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+   
