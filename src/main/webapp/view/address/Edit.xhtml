@@ -16,9 +16,7 @@
                         <p:inputText id="id" value="#{addressController.selected.id}" title="#{bundle.EditAddressTitle_id}" disabled="true"/>
 
                         <p:outputLabel value="#{bundle.EditAddressLabel_state}" for="state" />
-                        <p:inputText id="state" value="#{addressController.selected.state}" maxlength="2" title="#{bundle.EditAddressTitle_state}" required="true" requiredMessage="#{bundle.EditAddressRequiredMessage_state}">
-                            <f:validateRegex pattern="[/^A-Z]" />
-                        </p:inputText>
+                        <p:inputText id="state" value="#{addressController.selected.state}" maxlength="2" title="#{bundle.EditAddressTitle_state}" required="true" requiredMessage="#{bundle.EditAddressRequiredMessage_state}"/>
 
                         <p:outputLabel value="#{bundle.EditAddressLabel_city}" for="city" />
                         <p:inputText id="city" value="#{addressController.selected.city}" title="#{bundle.EditAddressTitle_city}" required="true" requiredMessage="#{bundle.EditAddressRequiredMessage_city}"/>

@@ -13,9 +13,7 @@
                 <h:panelGroup id="display">
                     <h:panelGrid columns="2" rendered="#{addressController.selected != null}">
                         <p:outputLabel value="#{bundle.CreateAddressLabel_state}" for="state" />
-                        <p:inputText id="state" value="#{addressController.selected.state}" maxlength="2" title="#{bundle.CreateAddressTitle_state}" required="true" requiredMessage="#{bundle.CreateAddressRequiredMessage_state}">
-                            <f:validateRegex pattern="[/^A-Z]" />
-                        </p:inputText>
+                        <p:inputText id="state" value="#{addressController.selected.state}" maxlength="2" title="#{bundle.CreateAddressTitle_state}" required="true" requiredMessage="#{bundle.CreateAddressRequiredMessage_state}"/>
 
                         <p:outputLabel value="#{bundle.CreateAddressLabel_city}" for="city" />
                         <p:inputText id="city" value="#{addressController.selected.city}" title="#{bundle.CreateAddressTitle_city}" required="true" requiredMessage="#{bundle.CreateAddressRequiredMessage_city}"/>
