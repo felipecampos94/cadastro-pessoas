@@ -87,6 +87,16 @@ public class Address implements Serializable {
         this.zipCode = zipCode;
     }
 
+    public Address(Integer id, String state, String city, String street, int number, String zipCode, Person personId) {
+        this.id = id;
+        this.state = state;
+        this.city = city;
+        this.street = street;
+        this.number = number;
+        this.zipCode = zipCode;
+        this.personId = personId;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -167,5 +177,5 @@ public class Address implements Serializable {
     public String toString() {
         return "com.cadastro.pessoas.entity.Address[ id=" + id + " ]";
     }
-    
+
 }

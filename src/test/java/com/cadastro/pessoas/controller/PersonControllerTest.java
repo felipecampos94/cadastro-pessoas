@@ -9,9 +9,7 @@ import com.cadastro.pessoas.entity.Person;
 import com.cadastro.pessoas.facade.PersonFacade;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 import java.util.ResourceBundle;
-import javax.faces.context.FacesContext;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,15 +17,9 @@ import org.junit.runner.RunWith;
 import static org.mockito.ArgumentMatchers.anyInt;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.mockStatic;
 
 /**
  *
