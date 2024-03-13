@@ -7,7 +7,6 @@ import com.cadastro.pessoas.facade.PersonFacade;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
