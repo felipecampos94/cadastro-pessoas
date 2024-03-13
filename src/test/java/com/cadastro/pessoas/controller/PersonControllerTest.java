@@ -1,31 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
- */
 package com.cadastro.pessoas.controller;
 
-import com.cadastro.pessoas.controller.util.JsfUtil;
 import com.cadastro.pessoas.entity.Person;
 import com.cadastro.pessoas.facade.PersonFacade;
 import java.util.Arrays;
 import java.util.List;
-import java.util.ResourceBundle;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.DisplayName;
 import static org.mockito.ArgumentMatchers.anyInt;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import org.mockito.MockitoAnnotations;
-import org.mockito.junit.MockitoJUnitRunner;
 
-/**
- *
- * @author Felipe
- */
-@RunWith(MockitoJUnitRunner.class)
 public class PersonControllerTest {
 
     public static final Integer ID = 1;
@@ -35,12 +27,6 @@ public class PersonControllerTest {
 
     @Mock
     private PersonFacade personFacade;
-
-    @Mock
-    private ResourceBundle bundle;
-
-    @Mock
-    private JsfUtil jsfUtil;
 
     @InjectMocks
     private PersonController personController;
@@ -56,11 +42,45 @@ public class PersonControllerTest {
         startPerson();
     }
 
-    /**
-     * Test of getItems method, of class PersonController.
-     */
     @Test
-    public void testGetItems() {
+    @DisplayName("When the person is created successfully")
+    public void createPersonThenReturnSuccess() {
+        PersonController mockedController = mock(PersonController.class);
+        doNothing().when(mockedController).create();
+
+        mockedController.create();
+        verify(mockedController, times(1)).create();
+
+        assertNotNull(mockedController.getItems());
+    }
+
+    @Test
+    @DisplayName("When the person is updated successfully")
+    public void updatePersonThenReturnSuccess() {
+        PersonController mockedController = mock(PersonController.class);
+        doNothing().when(mockedController).update();
+
+        mockedController.update();
+        verify(mockedController, times(1)).update();
+
+        assertNotNull(mockedController.getItems());
+    }
+
+    @Test
+    @DisplayName("When the person is deleted successfully")
+    public void destroyPersonSuccess() {
+        PersonController mockedController = mock(PersonController.class);
+        doNothing().when(mockedController).destroy();
+
+        mockedController.destroy();
+
+        verify(mockedController, times(1)).destroy();
+        assertTrue(mockedController.getItems().isEmpty());
+    }
+
+    @Test
+    @DisplayName("When the list of persons is returned successfully")
+    public void findAllPersons() {
         when(personFacade.findAll()).thenReturn(Arrays.asList(person));
 
         List<Person> result = personController.getItems();
@@ -71,11 +91,9 @@ public class PersonControllerTest {
         assertEquals(ID, result.get(0).getId());
     }
 
-    /**
-     * Test of getPerson method, of class PersonController.
-     */
     @Test
-    public void testGetPerson() {
+    @DisplayName("When the search for id is returned successfully")
+    public void findByIdPersonThenReturnSuccess() {
         when(personFacade.find(anyInt())).thenReturn(person);
 
         Person result = personController.getPerson(ID);

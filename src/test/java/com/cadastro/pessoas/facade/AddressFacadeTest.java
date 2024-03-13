@@ -4,26 +4,14 @@
  */
 package com.cadastro.pessoas.facade;
 
-import static com.cadastro.pessoas.controller.AddressControllerTest.CITY;
-import static com.cadastro.pessoas.controller.AddressControllerTest.ID;
-import static com.cadastro.pessoas.controller.AddressControllerTest.NUMBER;
-import static com.cadastro.pessoas.controller.AddressControllerTest.STATE;
-import static com.cadastro.pessoas.controller.AddressControllerTest.STREET;
-import static com.cadastro.pessoas.controller.AddressControllerTest.ZIP_CODE;
 import com.cadastro.pessoas.entity.Address;
 import com.cadastro.pessoas.entity.Person;
-import static com.cadastro.pessoas.facade.PersonFacadeTest.AGE;
-import static com.cadastro.pessoas.facade.PersonFacadeTest.GENDER;
-import static com.cadastro.pessoas.facade.PersonFacadeTest.ID;
-import static com.cadastro.pessoas.facade.PersonFacadeTest.NAME;
 import java.util.Arrays;
 import java.util.List;
-import javax.ejb.embeddable.EJBContainer;
 import javax.persistence.EntityManager;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -34,10 +22,6 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import org.mockito.MockitoAnnotations;
 
-/**
- *
- * @author Felipe
- */
 public class AddressFacadeTest {
 
     //Address
